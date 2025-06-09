@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'transactions',
+    'drf_yasg'
 ]
 
 # Add DRF settings (if using DRF)
@@ -53,6 +54,22 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'transactions.pagination.CustomTransactionPagination',
     'PAGE_SIZE': 10
 }
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+            'description': 'Token-based authentication. Format: "Token your_token_here"'
+        }
+    },
+    'USE_SESSION_AUTH': False,
+    'PERSIST_AUTH': True,
+    'REFETCH_SCHEMA_WITH_AUTH': True,
+    'REFETCH_SCHEMA_ON_LOGOUT': True,
+}
+
 
 
 MIDDLEWARE = [

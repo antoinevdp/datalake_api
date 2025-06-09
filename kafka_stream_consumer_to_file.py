@@ -56,7 +56,7 @@ def consume_kafka_to_parquet(topic_name, bootstrap_servers, output_directory, ba
 def save_parquet_batch(transactions, output_directory, topic_name, file_counter):
     """Save a batch of transactions to Parquet file"""
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    filename = f"{output_directory}/{topic_name}_batch_{file_counter}_{timestamp}.parquet"
+    filename = f"{output_directory}/{topic_name}/{topic_name}_batch_{file_counter}_{timestamp}.parquet"
     
     # Convert to DataFrame
     df = pd.DataFrame(transactions)
